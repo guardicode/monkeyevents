@@ -1,7 +1,7 @@
 import logging
 from typing import Generic, Type, TypeVar
 
-from monkeyevents.events import AbstractAgentEvent
+from monkeyevents.agent_events import AbstractAgentEvent
 from monkeyevents.utils.code_utils import del_key
 
 from . import EVENT_TYPE_FIELD, IAgentEventSerializer, JSONSerializable

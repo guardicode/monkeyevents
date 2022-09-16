@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict, List, Union
 
-from monkeyevents.events import AbstractAgentEvent
+from monkeyevents.agent_events import AbstractAgentEvent
 
 JSONSerializable = Union[  # type: ignore[misc]
     Dict[str, "JSONSerializable"],  # type: ignore[misc]
