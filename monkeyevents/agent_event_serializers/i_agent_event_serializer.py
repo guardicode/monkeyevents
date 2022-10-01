@@ -1,17 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import Dict, List, Union
 
 from monkeyevents.agent_events import AbstractAgentEvent
-
-JSONSerializable = Union[  # type: ignore[misc]
-    Dict[str, "JSONSerializable"],  # type: ignore[misc]
-    List["JSONSerializable"],  # type: ignore[misc]
-    int,
-    str,
-    float,
-    bool,
-    None,
-]
+from monkeyevents.types import JSONSerializable
 
 
 class IAgentEventSerializer(ABC):
