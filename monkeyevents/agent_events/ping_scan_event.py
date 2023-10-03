@@ -1,7 +1,7 @@
 from ipaddress import IPv4Address
 from typing import Optional
 
-from monkeyevents import OperatingSystem
+from monkeytypes import OperatingSystem
 
 from . import AbstractAgentEvent
 
