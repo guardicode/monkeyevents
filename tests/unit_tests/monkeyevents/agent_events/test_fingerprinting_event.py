@@ -1,8 +1,8 @@
 from ipaddress import IPv4Address
 
+from monkeytypes import OperatingSystem
 from tests.unit_tests.monkey_island.cc.models.test_agent import AGENT_ID
 
-from monkeyevents import OperatingSystem
 from monkeyevents.agent_events import FingerprintingEvent
 from monkeyevents.types import AgentID, DiscoveredService, NetworkPort, NetworkProtocol, NetworkService
 
