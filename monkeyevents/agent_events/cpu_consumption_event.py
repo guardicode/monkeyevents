@@ -1,5 +1,6 @@
+from typing import Annotated
+
 from pydantic import Field
-from typing_extensions import Annotated
 
 from monkeyevents.types import Percent
 
