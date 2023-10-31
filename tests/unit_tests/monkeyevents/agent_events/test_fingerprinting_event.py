@@ -1,10 +1,10 @@
 from ipaddress import IPv4Address
 
-from monkeytypes import NetworkProtocol, NetworkService, OperatingSystem
+from monkeytypes import NetworkPort, NetworkProtocol, NetworkService, OperatingSystem
 from tests.unit_tests.monkey_island.cc.models.test_agent import AGENT_ID
 
 from monkeyevents.agent_events import FingerprintingEvent
-from monkeyevents.types import AgentID, DiscoveredService, NetworkPort
+from monkeyevents.types import AgentID, DiscoveredService
 
 OS_VERSION = "Jammy 22.04"
 
