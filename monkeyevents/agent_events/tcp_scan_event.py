@@ -1,9 +1,7 @@
 from ipaddress import IPv4Address
 from typing import Dict
 
-from monkeytypes import PortStatus
-
-from monkeyevents.types import NetworkPort
+from monkeytypes import NetworkPort, PortStatus
 
 from . import AbstractAgentEvent
 
