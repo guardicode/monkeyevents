@@ -1,11 +1,8 @@
-from tests.data_for_tests.propagation_credentials import (
-    CREDENTIALS,
+from tests.constants import (AGENT_ID, CREDENTIALS,
     PLAINTEXT_LM_HASH,
     PLAINTEXT_NT_HASH,
     PLAINTEXT_PASSWORD,
-    PLAINTEXT_PRIVATE_KEY_1,
-)
-from tests.unit_tests.monkey_island.cc.models.test_agent import AGENT_ID
+    PLAINTEXT_PRIVATE_KEY_1,)
 
 from monkeyevents.agent_events import CredentialsStolenEvent
 

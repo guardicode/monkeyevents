@@ -8,7 +8,7 @@ from monkeytypes import (
     NetworkService,
     OperatingSystem,
 )
-from tests.unit_tests.monkey_island.cc.models.test_agent import AGENT_ID
+from tests.constants import AGENT_ID
 
 from monkeyevents.agent_events import FingerprintingEvent
 
