@@ -1,0 +1,35 @@
+{
+  "template": "https://github.com/guardicode/infection-monkey-cookiecutter",
+  "commit": "562ee0b3fab64d681e75418d21f035f06146146b",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "monkeyevents",
+      "__project_slug": "monkeyevents",
+      "full_name": "Shreya Malviya",
+      "email": "shreya.malviya@gmail.com",
+      "github_repo": "monkeyevents",
+      "platform": "github",
+      "org": "guardicode",
+      "github_url": "guardicode",
+      "url": "https://github.com/guardicode/monkeyevents",
+      "__year": "2023",
+      "license": "GPLv3",
+      "versioning_scheme": "PEP440",
+      "project_short_description": "Infection Monkey events and events-related code",
+      "python_major_version": "3",
+      "python_minor_version": "11",
+      "hook_shellcheck": "n",
+      "codecov": "y",
+      "exclude_these_file_in_flake8": "vulture_allowlist.py",
+      "_black_version": "23.9.1",
+      "_dlint_version": "0.14.1",
+      "_flake8_version": "6.0.0",
+      "_isort_version": "5.12.0",
+      "_mypy_version": "1.5.1",
+      "_vulture_version": "2.9.1",
+      "_template": "https://github.com/guardicode/infection-monkey-cookiecutter"
+    }
+  },
+  "directory": null
+}
