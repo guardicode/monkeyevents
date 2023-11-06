@@ -14,3 +14,6 @@ from .cpu_consumption_event import CPUConsumptionEvent
 from .ram_consumption_event import RAMConsumptionEvent
 from .http_request_event import HTTPRequestEvent
 from .defacement_event import DefacementEvent
+from .schema import EVENT_TYPE_FIELD, TIMESTAMP_FIELD
+from .i_agent_event_serializer import IAgentEventSerializer
+from .pydantic_agent_event_serializer import PydanticAgentEventSerializer
