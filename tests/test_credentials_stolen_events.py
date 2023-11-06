@@ -4,7 +4,7 @@ from tests.constants import (AGENT_ID, CREDENTIALS,
     PLAINTEXT_PASSWORD,
     PLAINTEXT_PRIVATE_KEY_1,)
 
-from monkeyevents.agent_events import CredentialsStolenEvent
+from monkeyevents import CredentialsStolenEvent
 
 TEST_EVENT = CredentialsStolenEvent(stolen_credentials=CREDENTIALS, source=AGENT_ID)
 

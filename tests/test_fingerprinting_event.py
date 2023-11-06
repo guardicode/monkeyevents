@@ -10,7 +10,7 @@ from monkeytypes import (
 )
 from tests.constants import AGENT_ID
 
-from monkeyevents.agent_events import FingerprintingEvent
+from monkeyevents import FingerprintingEvent
 
 OS_VERSION = "Jammy 22.04"
 

@@ -10,7 +10,7 @@ from monkeyevents.agent_event_serializers import (
     IAgentEventSerializer,
     PydanticAgentEventSerializer,
 )
-from monkeyevents.agent_events import AbstractAgentEvent
+from monkeyevents import AbstractAgentEvent
 
 AGENT_ID = UUID("f811ad00-5a68-4437-bd51-7b5cc1768ad5")
 
