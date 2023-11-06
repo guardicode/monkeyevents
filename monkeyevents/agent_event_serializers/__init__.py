@@ -1,3 +1,3 @@
-from .consts import EVENT_TYPE_FIELD, TIMESTAMP_FIELD
+from .schema import EVENT_TYPE_FIELD, TIMESTAMP_FIELD
 from .i_agent_event_serializer import IAgentEventSerializer
 from .pydantic_agent_event_serializer import PydanticAgentEventSerializer
