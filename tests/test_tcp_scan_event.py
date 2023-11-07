@@ -4,7 +4,7 @@ from uuid import UUID
 import pytest
 from monkeytypes import PortStatus
 
-from monkeyevents.agent_events import TCPScanEvent
+from monkeyevents import TCPScanEvent
 
 TARGET_IP_STR = "192.168.1.10"
 AGENT_ID = UUID("012e7238-7b81-4108-8c7f-0787bc3f3c10")

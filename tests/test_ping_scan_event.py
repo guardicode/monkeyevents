@@ -3,9 +3,9 @@ from uuid import UUID
 
 import pytest
 from monkeytypes import OperatingSystem
-from tests.constants import AGENT_ID
 
-from monkeyevents.agent_events import PingScanEvent
+from monkeyevents import PingScanEvent
+from tests.constants import AGENT_ID
 
 PING_EVENT = PingScanEvent(
     source=AGENT_ID,

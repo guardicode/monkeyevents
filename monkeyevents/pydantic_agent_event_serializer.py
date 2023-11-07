@@ -3,7 +3,7 @@ from typing import Generic, Type, TypeVar
 
 from monkeytypes import JSONSerializable
 
-from monkeyevents.agent_events import AbstractAgentEvent
+from monkeyevents import AbstractAgentEvent
 
 from . import EVENT_TYPE_FIELD, IAgentEventSerializer
 

@@ -1,10 +1,12 @@
-from tests.constants import (AGENT_ID, CREDENTIALS,
+from monkeyevents import CredentialsStolenEvent
+from tests.constants import (
+    AGENT_ID,
+    CREDENTIALS,
     PLAINTEXT_LM_HASH,
     PLAINTEXT_NT_HASH,
     PLAINTEXT_PASSWORD,
-    PLAINTEXT_PRIVATE_KEY_1,)
-
-from monkeyevents.agent_events import CredentialsStolenEvent
+    PLAINTEXT_PRIVATE_KEY_1,
+)
 
 TEST_EVENT = CredentialsStolenEvent(stolen_credentials=CREDENTIALS, source=AGENT_ID)
 

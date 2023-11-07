@@ -4,7 +4,6 @@ from uuid import UUID
 from monkeytypes import Credentials, EmailAddress, LMHash, NTHash, Password, SSHKeypair, Username
 from pydantic import SecretStr
 
-
 AGENT_ID = UUID("012e7238-7b81-4108-8c7f-0787bc3f3c10")
 
 USERNAME = "m0nk3y_user"

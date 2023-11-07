@@ -2,7 +2,7 @@ from uuid import UUID
 
 import pytest
 
-from monkeyevents.agent_events import CPUConsumptionEvent
+from monkeyevents import CPUConsumptionEvent
 
 AGENT_ID = UUID("012e7238-7b81-4108-8c7f-0787bc3f3c10")
 TIMESTAMP = 1664371327.4067292
