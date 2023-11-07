@@ -45,7 +45,7 @@ paths = ["monkeyevents", "vulture_allowlist.py"]
 name = "monkeyevents"
 version = "v0.1.0"
 description = "Infection Monkey events and events-related code"
-authors = ["Shreya Malviya <shreya.malviya@gmail.com>"]
+authors = ["Shreya Malviya <shreya.malviya@gmail.com>", "Mike Salvatore <mike.s.salvatore@gmail.com>"]
 license = "GPLv3"
 classifiers=[
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
