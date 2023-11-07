@@ -44,7 +44,7 @@ paths = ["monkeyevents", "vulture_allowlist.py"]
 [tool.poetry]
 name = "monkeyevents"
 version = "v0.2.0"
-description = "Infection Monkey events and events-related code"
+description = "Infection Monkey Agent events and events-related code"
 authors = ["Shreya Malviya <shreya.malviya@gmail.com>", "Mike Salvatore <mike.s.salvatore@gmail.com>"]
 license = "GPLv3"
 classifiers=[
