@@ -5,12 +5,12 @@ from uuid import UUID
 import pytest
 from pydantic import Field
 
-from monkeyevents.agent_event_serializers import (
+from monkeyevents import (
     EVENT_TYPE_FIELD,
+    AbstractAgentEvent,
     IAgentEventSerializer,
     PydanticAgentEventSerializer,
 )
-from monkeyevents.agent_events import AbstractAgentEvent
 
 AGENT_ID = UUID("f811ad00-5a68-4437-bd51-7b5cc1768ad5")
 
