@@ -1,4 +1,3 @@
-import logging
 from typing import Generic, Type, TypeVar
 
 from monkeytypes import JSONSerializable
@@ -6,8 +5,6 @@ from monkeytypes import JSONSerializable
 from monkeyevents import AbstractAgentEvent
 
 from . import EVENT_TYPE_FIELD, IAgentEventSerializer
-
-logger = logging.getLogger(__name__)
 
 T = TypeVar("T", bound=AbstractAgentEvent)
 
