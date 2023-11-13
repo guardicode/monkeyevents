@@ -1,5 +1,5 @@
 from .abstract_agent_event import AbstractAgentEvent, AgentEventTag, EVENT_TAG_REGEX
-from .credentials_stolen_events import CredentialsStolenEvent
+from .credentials_stolen_event import CredentialsStolenEvent
 from .ping_scan_event import PingScanEvent
 from .tcp_scan_event import TCPScanEvent
 from .fingerprinting_event import FingerprintingEvent
