@@ -1,7 +1,7 @@
 import time
 from abc import ABC
 from ipaddress import IPv4Address
-from typing import Annotated, FrozenSet, Union
+from typing import Annotated, Union
 
 from monkeytypes import AgentID, InfectionMonkeyBaseModel, MachineID
 from pydantic import Field, StringConstraints
@@ -30,7 +30,7 @@ class AbstractAgentEvent(InfectionMonkeyBaseModel, ABC):
     source: AgentID
     target: Union[MachineID, IPv4Address, None] = Field(default=None)
     timestamp: float = Field(default_factory=time.time)
-    tags: FrozenSet[AgentEventTag] = Field(default_factory=frozenset)
+    tags: frozenset[AgentEventTag] = Field(default_factory=frozenset)
 
     def __hash__(self):
         return hash((type(self), *tuple(self.__dict__.values())))
