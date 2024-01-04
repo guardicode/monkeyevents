@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/guardicode/infection-monkey-cookiecutter",
-  "commit": "ecf843de87f18890e15caa3ef6dd3495973ba31b",
+  "commit": "80df1e52622ffc903dc62dddc49f57a898394e3c",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -13,12 +13,13 @@
       "org": "guardicode",
       "github_url": "guardicode",
       "url": "https://github.com/guardicode/monkeyevents",
-      "__year": "2023",
+      "__year": "2024",
       "license": "GPLv3",
       "versioning_scheme": "PEP440",
       "project_short_description": "Infection Monkey Agent events and events-related code",
       "python_major_version": "3",
       "python_minor_version": "11",
+      "support_type_checking": "y",
       "hook_shellcheck": "n",
       "codecov": "y",
       "travis_ci": "n",
