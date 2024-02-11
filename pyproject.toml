@@ -38,7 +38,7 @@ log_cli_date_format = "%H:%M:%S"
 addopts = "-v --capture=sys tests"
 
 [tool.vulture]
-exclude=[]
+exclude=["monkeyevents/tags/attack.py"]
 paths = ["monkeyevents", "vulture_allowlist.py"]
 
 [tool.poetry]
