@@ -19,26 +19,18 @@ mitre_source = (
 # Begin parameters; modify these to customize the tags produced by the script
 
 included_platforms = ["Windows", "Linux"]
-include_subtechniques = True
-include_deprecated = False  # include techniques marked as "deprecated"
-include_revoked = False  # include techniques marked as "revoked"
 
 # End parameters
 
 
 def retrieve_mitre_data(url):
     print("Attempting download of Mitre data, please wait...")
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            print("\nDownload finished!")
-            return json.loads(response.content)
-        else:
-            print("Error: ", response.status_code)
-            return None
-    except requests.RequestException as e:
-        print("Error: ", e)
-        return None
+    response = requests.get(url)
+    if response.status_code == 200:
+        print("\nDownload finished!")
+    else:
+        print("Error: ", response.status_code)
+    return json.loads(response.content)
 
 
 def reformat_technique(target_technique):
@@ -49,7 +41,7 @@ def reformat_technique(target_technique):
     # param target_technique dict - technique object from the mitre dataset
     # returns a specially-formatted string to suit the specs of monkeyevents
     #
-    output_reformatted_technique = (
+    return (
         "_".join(
             [
                 target_technique["name"].upper().replace(" ", "_"),
@@ -63,28 +55,19 @@ def reformat_technique(target_technique):
         .replace(")", "")
         .replace("Ä", "A")
     )
-    return output_reformatted_technique
 
 
 mitre_dataset = retrieve_mitre_data(mitre_source)
 if mitre_dataset:
     valid_techniques = []
     for technique in mitre_dataset.get("objects", []):
-        if technique.get("type") == "attack-pattern":
+        if (
+                technique.get("type") == "attack-pattern" and
+                not technique.get("x_mitre_deprecated") and
+                not technique.get("revoked")
+        ):
             x_mitre_platforms = technique.get("x_mitre_platforms", [])
-            x_mitre_is_subtechnique = technique.get("x_mitre_is_subtechnique", False)
-            x_mitre_deprecated = technique.get("x_mitre_deprecated", False)
-            revoked = technique.get("revoked", False)
-
-            checks = {
-                "platforms": any(platform in x_mitre_platforms for platform in included_platforms),
-                "subtechnique": x_mitre_is_subtechnique == include_subtechniques
-                or not include_subtechniques,
-                "deprecated": x_mitre_deprecated == include_deprecated or not include_deprecated,
-                "revoked": revoked == include_revoked or not include_revoked,
-            }
-
-            if all(checks.values()):
+            if any(platform in x_mitre_platforms for platform in included_platforms):
                 reformatted_technique = reformat_technique(technique)
                 designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
                 valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
