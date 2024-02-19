@@ -1,4 +1,6 @@
 import json
+from pathlib import Path
+from typing import Iterable
 
 import requests
 
@@ -19,6 +21,7 @@ mitre_source = (
 # Begin parameters; modify these to customize the tags produced by the script
 
 included_platforms = ["Windows", "Linux"]
+output_path = Path("monkeyevents/tags/attack.py")
 
 # End parameters
 
@@ -76,6 +79,16 @@ def technique_fits_project_scope(target_technique):
         return False
 
 
+def write_tags_to_file(tags: Iterable[str], filepath: Path):
+    # This function writes the tags to a file
+    output = "\n".join(tags) + "\n"
+
+    with open(filepath, "w") as file:
+        file.write(output)
+
+    print("New attack.py file generated!")
+
+
 mitre_dataset = retrieve_mitre_data(mitre_source)
 
 valid_techniques = []
@@ -85,10 +98,5 @@ for technique in mitre_dataset.get("objects", []):
         designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
         valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
 
-output = "\n".join(valid_techniques) + "\n"
-filepath = "monkeyevents/tags/attack.py"
 
-with open(filepath, "w") as file:
-    file.write(output)
-
-print("New attack.py file generated!")
+write_tags_to_file(valid_techniques, output_path)
