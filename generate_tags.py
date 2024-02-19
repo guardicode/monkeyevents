@@ -57,27 +57,34 @@ def reformat_technique(target_technique):
     )
 
 
+def technique_fits_project_scope(target_technique):
+    # This check validates whether the given technique fits the scope of the project
+    # For example, it is an attack technique, it is not deprecated or revoked,
+    # and whether any of the technique's indicated platforms match the project
+    if (
+        technique.get("type") == "attack-pattern" and
+        not technique.get("x_mitre_deprecated") and
+        not technique.get("revoked") and
+        any(platform in technique.get("x_mitre_platforms", []) for platform in included_platforms)
+    ):
+        return True
+    else:
+        return False
+
+
 mitre_dataset = retrieve_mitre_data(mitre_source)
-if mitre_dataset:
-    valid_techniques = []
-    for technique in mitre_dataset.get("objects", []):
-        if (
-                technique.get("type") == "attack-pattern" and
-                not technique.get("x_mitre_deprecated") and
-                not technique.get("revoked")
-        ):
-            x_mitre_platforms = technique.get("x_mitre_platforms", [])
-            if any(platform in x_mitre_platforms for platform in included_platforms):
-                reformatted_technique = reformat_technique(technique)
-                designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
-                valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
 
-    output = "\n".join(valid_techniques) + "\n"
-    filepath = "monkeyevents/tags/attack.py"
+valid_techniques = []
+for technique in mitre_dataset.get("objects", []):
+    if technique_fits_project_scope(technique):
+        reformatted_technique = reformat_technique(technique)
+        designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
+        valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
 
-    with open(filepath, "w") as file:
-        file.write(output)
+output = "\n".join(valid_techniques) + "\n"
+filepath = "monkeyevents/tags/attack.py"
 
-    print("New attack.py file generated!")
-else:
-    print("Failed to generate attack.py :(")
+with open(filepath, "w") as file:
+    file.write(output)
+
+print("New attack.py file generated!")
