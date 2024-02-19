@@ -26,10 +26,11 @@ included_platforms = ["Windows", "Linux"]
 def retrieve_mitre_data(url):
     print("Attempting download of Mitre data, please wait...")
     response = requests.get(url)
+    response.raise_for_status()
+
     if response.status_code == 200:
         print("\nDownload finished!")
-    else:
-        print("Error: ", response.status_code)
+
     return json.loads(response.content)
 
 
