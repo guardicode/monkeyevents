@@ -75,6 +75,7 @@ vulture = "2.9.1"
 
 [tool.poetry.group.dev.dependencies]
 types-requests = "^2.31.0.20240125"
+requests = "^2.31.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
