@@ -62,10 +62,13 @@ def technique_fits_project_scope(target_technique):
     # For example, it is an attack technique, it is not deprecated or revoked,
     # and whether any of the technique's indicated platforms match the project
     if (
-        target_technique.get("type") == "attack-pattern" and
-        not target_technique.get("x_mitre_deprecated") and
-        not target_technique.get("revoked") and
-        any(platform in target_technique.get("x_mitre_platforms", []) for platform in included_platforms)
+        target_technique.get("type") == "attack-pattern"
+        and not target_technique.get("x_mitre_deprecated")
+        and not target_technique.get("revoked")
+        and any(
+            platform in target_technique.get("x_mitre_platforms", [])
+            for platform in included_platforms
+        )
     ):
         return True
     else:
