@@ -4,11 +4,11 @@ from typing import Collection, Iterable
 
 import requests
 
-# This script loads the enterprise-attack.json mitre dataset into a dict (mitre_dataset)
+# This script loads the enterprise-attack.json MITRE dataset into a dict (MITRE_dataset)
 # according to the parameters set below. The dict is then iterated to produce an attack.py
-# file, containing variables for the multiple Mitre ATT&CK tags relevant to the project.
+# file, containing variables for the multiple MITRE ATT&CK tags relevant to the project.
 #
-# The enterprise-attack.json file is sourced from Mitre's repository at
+# The enterprise-attack.json file is sourced from MITRE's repository at
 # https://github.com/mitre-attack/attack-stix-data/tree/master/enterprise-attack.
 
 
@@ -28,7 +28,7 @@ def main(mitre_source: str, included_platforms: Collection[str], output_path: Pa
 
 
 def retrieve_mitre_data(url):
-    print("Attempting download of Mitre data, please wait...")
+    print("Attempting download of MITRE data, please wait...")
     response = requests.get(url)
     response.raise_for_status()
 
@@ -58,10 +58,10 @@ def technique_fits_project_scope(target_technique):
 
 def reformat_technique(target_technique):
     #
-    # This function reformats the given technique from the mitre dataset to conform
+    # This function reformats the given technique from the MITRE dataset to conform
     # to the specs of monkeyevents.
     #
-    # param target_technique dict - technique object from the mitre dataset
+    # param target_technique dict - technique object from the MITRE dataset
     # returns a specially-formatted string to suit the specs of monkeyevents
     #
     return (
