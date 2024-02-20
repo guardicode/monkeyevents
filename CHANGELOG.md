@@ -8,13 +8,13 @@ the [PEP 440 version scheme](https://peps.python.org/pep-0440/#version-scheme).
 
 ## [v0.4.0 - 2024-02-19]
 ### Added
-- Support for type checking (py.typed marker file)
-- All relevant MITRE ATT&CK tags.
+- Support for type checking (py.typed marker file). #4
+- All relevant MITRE ATT&CK tags. #3
 
 
 ## [v0.3.0 - 2023-11-27]
 ### Added
-- A specific PTH tag (T1550.002)
+- A specific PTH tag (T1550.002). #2
 
 
 ## [v0.2.0 - 2023-11-07]
