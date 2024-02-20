@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Iterable
+from typing import Collection, Iterable
 
 import requests
 
@@ -11,22 +11,8 @@ import requests
 # The enterprise-attack.json file is sourced from Mitre's repository at
 # https://github.com/mitre-attack/attack-stix-data/tree/master/enterprise-attack.
 
-# Replace the URL below with the version of your choice.
 
-mitre_source = (
-    "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/"
-    "master/enterprise-attack/enterprise-attack-14.1.json"
-)
-
-# Begin parameters; modify these to customize the tags produced by the script
-
-included_platforms = ["Windows", "Linux"]
-output_path = Path("monkeyevents/tags/attack.py")
-
-# End parameters
-
-
-def main():
+def main(mitre_source: str, included_platforms: Collection[str], output_path: Path):
     mitre_dataset = retrieve_mitre_data(mitre_source)
 
     valid_techniques = []
@@ -92,15 +78,22 @@ def reformat_technique(target_technique):
     )
 
 
-def write_tags_to_file(tags: Iterable[str], filepath: Path):
+def write_tags_to_file(tags: Iterable[str], output_path: Path):
     # This function writes the tags to a file
     output = "\n".join(tags) + "\n"
 
-    with open(filepath, "w") as file:
+    with open(output_path, "w") as file:
         file.write(output)
 
     print("New attack.py file generated!")
 
 
 if __name__ == "__main__":
-    main()
+    mitre_source = (
+        "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/"
+        "master/enterprise-attack/enterprise-attack-14.1.json"
+    )
+    included_platforms = ["Windows", "Linux"]
+    output_path = Path("monkeyevents/tags/attack.py")
+
+    main(mitre_source, included_platforms, output_path)
