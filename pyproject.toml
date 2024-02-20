@@ -38,7 +38,7 @@ log_cli_date_format = "%H:%M:%S"
 addopts = "-v --capture=sys tests"
 
 [tool.vulture]
-exclude=[]
+exclude=["monkeyevents/tags/attack.py"]
 paths = ["monkeyevents", "vulture_allowlist.py"]
 
 [tool.poetry]
@@ -72,6 +72,10 @@ pytest = "^7.1.0"
 pytest-cov = "^3.0.0"
 pytest-xdist = "^3.3.1"
 vulture = "2.9.1"
+
+[tool.poetry.group.dev.dependencies]
+types-requests = "^2.31.0.20240125"
+requests = "^2.31.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
