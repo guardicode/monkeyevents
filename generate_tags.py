@@ -22,6 +22,8 @@ def main(mitre_source: str, included_platforms: Collection[str], output_path: Pa
             designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
             valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
 
+    valid_techniques.sort(key=lambda t: t.split(" = ")[1])
+
     write_tags_to_file(valid_techniques, output_path)
 
 
