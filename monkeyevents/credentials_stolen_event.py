@@ -1,4 +1,4 @@
-from typing import Sequence
+from collections.abc import Sequence
 
 from monkeytypes import Credentials
 from pydantic import Field

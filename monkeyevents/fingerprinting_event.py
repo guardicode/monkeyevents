@@ -1,5 +1,5 @@
 from ipaddress import IPv4Address
-from typing import Optional, Tuple
+from typing import Optional
 
 from monkeytypes import DiscoveredService, OperatingSystem
 from pydantic import Field
@@ -21,4 +21,4 @@ class FingerprintingEvent(AbstractAgentEvent):
     target: IPv4Address
     os: Optional[OperatingSystem] = Field(default=None)
     os_version: Optional[str] = Field(default=None)
-    discovered_services: Tuple[DiscoveredService, ...] = Field(default_factory=tuple)
+    discovered_services: tuple[DiscoveredService, ...] = Field(default_factory=tuple)

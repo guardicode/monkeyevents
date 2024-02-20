@@ -1,5 +1,6 @@
+from collections.abc import Mapping
 from pathlib import PurePath, PurePosixPath, PureWindowsPath
-from typing import Any, Dict, Mapping, Tuple
+from typing import Any
 
 from monkeytypes import OperatingSystem
 from pydantic import ConfigDict, Field, field_serializer, field_validator
@@ -7,7 +8,7 @@ from pydantic import ConfigDict, Field, field_serializer, field_validator
 from . import AbstractAgentEvent
 
 
-def _serialize_pure_path(pure_path: PurePath) -> Dict[str, str]:
+def _serialize_pure_path(pure_path: PurePath) -> dict[str, str]:
     # We generate data on either Windows or Linux and that data is processed
     # on either OS which we can't sure where, so be need to serialize it as
     # dictionary containing the path as string and the operating system
@@ -62,7 +63,7 @@ class FileEncryptionEvent(AbstractAgentEvent):
         raise ValueError(f'"{os_string}" is not a valid operating system')
 
     @staticmethod
-    def _parse_path_dict(path_dict: Mapping[str, str]) -> Tuple[str, str]:
+    def _parse_path_dict(path_dict: Mapping[str, str]) -> tuple[str, str]:
         try:
             path_string = path_dict["path"]
             os_string = path_dict["os"]

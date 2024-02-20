@@ -11,3 +11,8 @@ Infection Monkey Agent an its plugins.
 $> poetry install
 $> poetry run pytest
 ```
+
+## Generating MITRE ATT&CK tags
+
+To automatically generate MITRE ATT&CK tags, run `python generate_tags.py`.
+This script can be edited to use the desired version of MITRE ATT&CK.

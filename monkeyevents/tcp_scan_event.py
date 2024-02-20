@@ -1,5 +1,4 @@
 from ipaddress import IPv4Address
-from typing import Dict
 
 from monkeytypes import NetworkPort, PortStatus
 
@@ -16,4 +15,4 @@ class TCPScanEvent(AbstractAgentEvent):
     """
 
     target: IPv4Address
-    ports: Dict[NetworkPort, PortStatus]
+    ports: dict[NetworkPort, PortStatus]
