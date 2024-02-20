@@ -52,8 +52,8 @@ def technique_fits_project_scope(target_technique):
         )
     ):
         return True
-    else:
-        return False
+
+    return False
 
 
 def reformat_technique(target_technique):
@@ -95,7 +95,7 @@ if __name__ == "__main__":
         "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/"
         "master/enterprise-attack/enterprise-attack-14.1.json"
     )
-    included_platforms = ["Windows", "Linux"]
+    included_platforms = ["Containers", "Linux", "Network", "PRE", "Windows"]
     output_path = Path("monkeyevents/tags/attack.py")
 
     main(mitre_source, included_platforms, output_path)
