@@ -89,14 +89,18 @@ def write_tags_to_file(tags: Iterable[str], filepath: Path):
     print("New attack.py file generated!")
 
 
-mitre_dataset = retrieve_mitre_data(mitre_source)
+def main():
+    mitre_dataset = retrieve_mitre_data(mitre_source)
 
-valid_techniques = []
-for technique in mitre_dataset.get("objects", []):
-    if technique_fits_project_scope(technique):
-        reformatted_technique = reformat_technique(technique)
-        designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
-        valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
+    valid_techniques = []
+    for technique in mitre_dataset.get("objects", []):
+        if technique_fits_project_scope(technique):
+            reformatted_technique = reformat_technique(technique)
+            designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
+            valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
+
+    write_tags_to_file(valid_techniques, output_path)
 
 
-write_tags_to_file(valid_techniques, output_path)
+if __name__ == "__main__":
+    main()
