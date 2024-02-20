@@ -26,6 +26,19 @@ output_path = Path("monkeyevents/tags/attack.py")
 # End parameters
 
 
+def main():
+    mitre_dataset = retrieve_mitre_data(mitre_source)
+
+    valid_techniques = []
+    for technique in mitre_dataset.get("objects", []):
+        if technique_fits_project_scope(technique):
+            reformatted_technique = reformat_technique(technique)
+            designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
+            valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
+
+    write_tags_to_file(valid_techniques, output_path)
+
+
 def retrieve_mitre_data(url):
     print("Attempting download of Mitre data, please wait...")
     response = requests.get(url)
@@ -35,6 +48,24 @@ def retrieve_mitre_data(url):
         print("\nDownload finished!")
 
     return json.loads(response.content)
+
+
+def technique_fits_project_scope(target_technique):
+    # This check validates whether the given technique fits the scope of the project
+    # For example, it is an attack technique, it is not deprecated or revoked,
+    # and whether any of the technique's indicated platforms match the project
+    if (
+        target_technique.get("type") == "attack-pattern"
+        and not target_technique.get("x_mitre_deprecated")
+        and not target_technique.get("revoked")
+        and any(
+            platform in target_technique.get("x_mitre_platforms", [])
+            for platform in included_platforms
+        )
+    ):
+        return True
+    else:
+        return False
 
 
 def reformat_technique(target_technique):
@@ -61,24 +92,6 @@ def reformat_technique(target_technique):
     )
 
 
-def technique_fits_project_scope(target_technique):
-    # This check validates whether the given technique fits the scope of the project
-    # For example, it is an attack technique, it is not deprecated or revoked,
-    # and whether any of the technique's indicated platforms match the project
-    if (
-        target_technique.get("type") == "attack-pattern"
-        and not target_technique.get("x_mitre_deprecated")
-        and not target_technique.get("revoked")
-        and any(
-            platform in target_technique.get("x_mitre_platforms", [])
-            for platform in included_platforms
-        )
-    ):
-        return True
-    else:
-        return False
-
-
 def write_tags_to_file(tags: Iterable[str], filepath: Path):
     # This function writes the tags to a file
     output = "\n".join(tags) + "\n"
@@ -87,19 +100,6 @@ def write_tags_to_file(tags: Iterable[str], filepath: Path):
         file.write(output)
 
     print("New attack.py file generated!")
-
-
-def main():
-    mitre_dataset = retrieve_mitre_data(mitre_source)
-
-    valid_techniques = []
-    for technique in mitre_dataset.get("objects", []):
-        if technique_fits_project_scope(technique):
-            reformatted_technique = reformat_technique(technique)
-            designation = f'"attack-{technique["external_references"][0]["external_id"]}"'
-            valid_techniques.append(f"{reformatted_technique}_TAG = {designation}")
-
-    write_tags_to_file(valid_techniques, output_path)
 
 
 if __name__ == "__main__":
