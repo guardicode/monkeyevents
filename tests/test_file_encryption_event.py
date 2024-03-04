@@ -6,6 +6,7 @@ import pytest
 from monkeytypes import OperatingSystem
 
 from monkeyevents import FileEncryptionEvent
+from monkeyevents.tags import DATA_ENCRYPTED_FOR_IMPACT_T1486_TAG
 
 TARGET_IP_STR = "192.168.1.10"
 AGENT_ID = UUID("012e7238-7b81-4108-8c7f-0787bc3f3c10")
@@ -19,6 +20,7 @@ LINUX_FILE_ENCRYPTION_EVENT = FileEncryptionEvent(
     target=IPv4Address(TARGET_IP_STR),
     file_path=LINUX_FILE_ENCRYPTED_PATH,
     success=True,
+    tags=[DATA_ENCRYPTED_FOR_IMPACT_T1486_TAG],
 )
 
 WINDOWS_FILE_ENCRYPTION_EVENT = FileEncryptionEvent(
@@ -36,6 +38,7 @@ LINUX_FILE_ENCRYPTION_OBJECT_DICT = {
     "file_path": LINUX_FILE_ENCRYPTED_PATH,
     "success": True,
     "error_message": "",
+    "tags": [DATA_ENCRYPTED_FOR_IMPACT_T1486_TAG],
 }
 
 LINUX_FILE_ENCRYPTION_SIMPLE_DICT = {
@@ -45,7 +48,7 @@ LINUX_FILE_ENCRYPTION_SIMPLE_DICT = {
     "file_path": {"path": str(LINUX_FILE_ENCRYPTED_PATH), "os": OperatingSystem.LINUX.value},
     "success": True,
     "error_message": "",
-    "tags": [],
+    "tags": [DATA_ENCRYPTED_FOR_IMPACT_T1486_TAG],
 }
 
 
