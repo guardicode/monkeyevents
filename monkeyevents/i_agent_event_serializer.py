@@ -18,7 +18,6 @@ class IAgentEventSerializer(ABC):
         :param event: Event to serialize
         :return: Serialized event
         """
-        pass
 
     @abstractmethod
     def deserialize(self, serialized_event: JSONSerializable) -> AbstractAgentEvent:
@@ -31,4 +30,3 @@ class IAgentEventSerializer(ABC):
                            type
         :raises ValueError: If one or more of the serialized fields contains an incompatible value
         """
-        pass
