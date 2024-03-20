@@ -61,7 +61,7 @@ pydantic = {extras = ["email"], version = "^2.4.2"}
 monkey-types = "*"
 
 [tool.poetry.dev-dependencies]
-black = "23.9.1"
+black = "24.3.0"
 dlint = "0.14.1"
 flake8 = "6.0.0"
 isort = "5.12.0"
